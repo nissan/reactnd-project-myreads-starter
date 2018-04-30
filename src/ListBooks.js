@@ -1,45 +1,33 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import BookShelf from './BookShelf';
-import * as BooksAPI from './BooksAPI';
 
-class ListBooks extends Component {
-    state = {
-        booksCurrentlyReading: [],
-        booksWantToRead:[],
-        booksRead:[],
-      }
-    async componentDidMount() {
-        const library = await BooksAPI.getAll();
-        this.setState({booksCurrentlyReading:library.filter(
-          book => book.shelf==='currentlyReading'
-        )});
-        this.setState({booksWantToRead:library.filter(
-          book => book.shelf==='wantToRead'
-        )});
-        this.setState({booksRead:library.filter(
-          book => book.shelf==='read'
-        )});
-      }
-    render() {
-    return (
+const ListBooks = (props) => {
+  return (
     <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
               <div>
-              <BookShelf title='Currently Reading' books={this.state.booksCurrentlyReading} />
-              <BookShelf title='Want to Read' books={this.state.booksWantToRead} />
-              <BookShelf title='Read' books={this.state.booksRead} />
-              </div>
+              <BookShelf books={props.library? props.library.filter(books =>
+    							  books.shelf==='currentlyReading'):[]}
+  						 shelf="currentlyReading" updateLibrary={props.updateLibrary}
+              />
+              <BookShelf books={props.library? props.library.filter(books =>
+                          books.shelf==='wantToRead'):[]}
+                    shelf="wantToRead" updateLibrary={props.updateLibrary}
+              />
+              <BookShelf books={props.library? props.library.filter(books =>
+                          books.shelf==='read'):[]}
+                    shelf="read" updateLibrary={props.updateLibrary}
+              />
+    		  </div>
             </div>
             <div className="open-search">
-                <Link to='/search'>Add a book</Link>
+              <Link to='/search'>Add a book</Link>
             </div>
           </div>
-        )
-    }
-}
+)};
 
-export default ListBooks;
+export default ListBooks

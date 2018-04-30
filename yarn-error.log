@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js start
+  /Users/nissan/.nvm/versions/node/v9.5.0/bin/node /Users/nissan/.nvm/versions/node/v9.5.0/bin/yarn start
 
 PATH: 
-  C:\tools\Anaconda3\Scripts\;C:\tools\Anaconda3\;C:\Program Files\Docker\Docker\Resources\bin;C:\Python36\Scripts\;C:\Python36\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\ProgramData\chocolatey\bin;C:\ProgramData\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Seq\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\WINDOWS\System32\OpenSSH\;C:\Users\nissa\AppData\Local\Microsoft\WindowsApps;C:\tools\cmder;;C:\Program Files\Microsoft VS Code\bin;C:\Users\nissa\.dotnet\tools;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps
+  /usr/local/bin/psql:/Users/nissan/Documents/source/repos/flutter/bin:/Users/nissan/Documents/source/repos/flutter/bin:/Users/nissan/.nvm/versions/node/v9.5.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 
 Yarn version: 
   1.5.1
@@ -11,14 +11,15 @@ Node version:
   9.5.0
 
 Platform: 
-  win32 x64
+  darwin x64
 
 npm manifest: 
   {
     "dependencies": {
       "prop-types": "^15.5.8",
       "react": "^15.5.4",
-      "react-dom": "^15.5.4"
+      "react-dom": "^15.5.4",
+      "react-router-dom": "^4.2.2"
     },
     "devDependencies": {
       "react-scripts": "0.9.5"
@@ -39,15 +40,15 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
-  Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c react-scripts start
-  Directory: C:\Users\nissa\Documents\Source\Repos\reactnd-project-myreads-starter
+  Exit code: 127
+  Command: sh
+  Arguments: -c react-scripts start
+  Directory: /Users/nissan/Documents/source/repos/reactnd-project-myreads-starter
   Output:
   
-      at ProcessTermError.MessageError (C:\ProgramData\nvm\v9.5.0\node_modules\yarn\lib\cli.js:186:110)
-      at new ProcessTermError (C:\ProgramData\nvm\v9.5.0\node_modules\yarn\lib\cli.js:226:113)
-      at ChildProcess.<anonymous> (C:\ProgramData\nvm\v9.5.0\node_modules\yarn\lib\cli.js:30281:17)
+      at ProcessTermError.MessageError (/Users/nissan/.nvm/versions/node/v9.5.0/lib/node_modules/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/Users/nissan/.nvm/versions/node/v9.5.0/lib/node_modules/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/Users/nissan/.nvm/versions/node/v9.5.0/lib/node_modules/yarn/lib/cli.js:30281:17)
       at ChildProcess.emit (events.js:160:13)
       at maybeClose (internal/child_process.js:943:16)
       at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)
