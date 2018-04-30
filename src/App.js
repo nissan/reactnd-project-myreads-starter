@@ -10,8 +10,8 @@ class BooksApp extends React.Component {
     super();
     this.state = {
       library: [],
-      searchResults:[],
-      currentQuery:''
+      searchResults: [],
+      currentQuery: ""
     };
     this.updateLibrary = this.updateLibrary.bind(this);
     this.search = this.search.bind(this);
@@ -32,29 +32,30 @@ class BooksApp extends React.Component {
   }
 
   async search(query) {
-    console.log('query: ' + query);
+    console.log("query: " + query);
     let resultsLibrary = [];
-    if (query === null || query === '') {
-      this.setState({ searchResults: []});
+    if (query === null || query === "") {
+      this.setState({ searchResults: [] });
     } else {
       this.flushState();
-      this.setState({library: await BooksAPI.getAll()});
+      this.setState({ library: await BooksAPI.getAll() });
       await BooksAPI.search(query).then(results => {
         //console.log(results);
-        resultsLibrary = results.map(result =>
-          this.state.library.find(item=>item.id===result.id)?
-                          this.state.library.find(item=>item.id===result.id)
-                          :result
+        resultsLibrary = results.map(
+          result =>
+            this.state.library.find(item => item.id === result.id)
+              ? this.state.library.find(item => item.id === result.id)
+              : result
         );
-        console.log(resultsLibrary);
+        //console.log(resultsLibrary);
         //match results with library, add shelf if match
-        this.setState({ currentQuery:query, searchResults: resultsLibrary });
+        this.setState({ currentQuery: query, searchResults: resultsLibrary });
       });
     }
   }
 
   flushState() {
-    this.setState({library:[], searchResults:[]});
+    this.setState({ library: [], searchResults: [] });
   }
 
   render() {
