@@ -4,6 +4,7 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import SearchBooks from "./SearchBooks";
 import ListBooks from "./ListBooks";
+import Error404Page from './Error404Page';
 
 class BooksApp extends React.Component {
   constructor() {
@@ -91,6 +92,7 @@ class BooksApp extends React.Component {
               />
             )}
           />
+          <Route component={Error404Page}/>
         </Switch>
       </div>
     );
