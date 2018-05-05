@@ -1,14 +1,28 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import DebounceInput from "react-debounce-input";
 import BookShelf from "./BookShelf";
 
 class SearchBooks extends Component {
   constructor(props) {
     super(props);
     this.onTextChanged = this.onTextChanged.bind(this);
+    this.state = {
+      library: []
+    };
   }
-  onTextChanged(event) {
-    this.props.search(event.target.value);
+  async onTextChanged(event) {
+    let results = await this.props.search(event.target.value)
+    this.setState({ library: results });
+  }
+  componentDidMount() {
+    this.setState({ library: [] });
+    //console.log("Search page mounted");
+  }
+
+  componentWillUnmount() {
+    this.setState({ library: [] });
+    //console.log("Unmounting search page");
   }
 
   render() {
@@ -27,16 +41,16 @@ class SearchBooks extends Component {
             However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
             you don't find a specific author or title. Every search is limited by search terms.
           */}
-            <input
-              type="text"
-              onChange={this.onTextChanged}
-              placeholder="Search by title or author"
-            />
+          <DebounceInput
+          placeholder="Search by title or author"
+          minLength={2}
+          debounceTimeout={300}
+          onChange={this.onTextChanged} />
           </div>
         </div>
         <div className="search-books-results">
           <BookShelf
-            books={this.props.library ? this.props.library : []}
+            books={this.state.library ? this.state.library : []}
             shelf="none"
             updateLibrary={this.props.updateLibrary}
           />

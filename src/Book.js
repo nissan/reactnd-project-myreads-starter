@@ -5,8 +5,8 @@ class Book extends Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
-  handleChange(event) {
-    this.props.updateLibrary(this.props.book, event.target.value);
+  async handleChange(event) {
+    await this.props.updateLibrary(this.props.book, event.target.value);
   }
   render() {
     return (

@@ -1,15 +1,19 @@
 # MyReads Project
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
-
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+This is my submission based off [the starter template](https://github.com/udacity/reactnd-project-myreads-starter) for the final assessment project for Udacity's React Fundamentals course. The goal of this application is to allow a user to
+1. List books that have been placed on one of three book shelves: 
+- Currently Reading
+- Want to Read 
+- Read
+2. Move books from one shelf to another shelf by changing the shelf it is associated with, and having the UI render immediately to reflect that change as well as have the backend updated with the change so it is persisted
+3. Search for books by title or author from the library via the given `BooksAPI` and either add a Book shown in the results to one of the shelves, or if the book is already on a shelf, to update the shelf the book is on
 
 ## TL;DR
 
 To get started developing right away:
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+* install all project dependencies with `yarn install`
+* start the development server with `yarn start`
 
 ## What You're Getting
 ```bash
@@ -24,13 +28,17 @@ To get started developing right away:
     ├── App.css # Styles for your app. Feel free to customize this as you desire.
     ├── App.js # This is the root of your app. Contains static HTML right now.
     ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
+    ├── Book.js # A React component that renders a book, props including the image, title, author and shelf of the book.
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
+    ├── BookShelf.js # A React component that renders a collection of books and the name of the shelf
     ├── icons # Helpful images for your app. Use at your discretion.
     │   ├── add.svg
     │   ├── arrow-back.svg
     │   └── arrow-drop-down.svg
     ├── index.css # Global styles. You probably won't need to change anything here.
     └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+    ├── ListBooks.js # A React component that renders the collection of bookshelves
+    ├── SearchBooks.js # A React component that renders a search text box and results of Books that match the query entered for a book title or author
 ```
 
 Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.

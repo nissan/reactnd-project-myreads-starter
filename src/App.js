@@ -37,7 +37,7 @@ class BooksApp extends React.Component {
     if (query === null || query === "") {
       //console.log("empty query, flush state");
       this.flushState();
-      this.setState({ searchResults: [] });
+      this.setState({ currentQuery:"", searchResults: [] });
     } 
     else {
       this.flushState();
@@ -56,6 +56,8 @@ class BooksApp extends React.Component {
         //match results with library, add shelf if match
         this.setState({ currentQuery: query, searchResults: resultsLibrary });
       });
+      //console.log(resultsLibrary);
+      return resultsLibrary;
     }
   }
 
