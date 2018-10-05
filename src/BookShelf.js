@@ -18,8 +18,8 @@ const BookShelf = props => {
           {props.books !== undefined &&
           props.books !== null &&
           props.books.length
-            ? props.books.map((book, key) => (
-                <li key={key}>
+            ? props.books.map((book) => (
+                <li key={book.id}>
                   <Book book={book} updateLibrary={props.updateLibrary} />
                 </li>
               ))

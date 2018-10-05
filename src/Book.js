@@ -18,6 +18,7 @@ class Book extends Component {
     await this.setState({shelf:this.props.book.shelf});
   }
   render() {
+    const {book} = this.props;
     return (
       <div className="book">
         <div className="book-top">
@@ -27,16 +28,7 @@ class Book extends Component {
               width: 128,
               height: 193,
               backgroundImage: `url("${
-                this.props.book.imageLinks !== null &&
-                this.props.book.imageLinks !== undefined
-                  ? this.props.book.imageLinks.smallThumbnail !== null &&
-                    this.props.book.imageLinks.smallThumbnail !== undefined
-                    ? this.props.book.imageLinks.smallThumbnail
-                    : this.props.book.imageLinks.thumbnail !== null &&
-                      this.props.book.imageLinks.thumbnail !== undefined
-                      ? this.props.book.imageLinks.thumbnail
-                      : ""
-                  : ""
+                book.imageLinks? book.imageLinks.thumbnail: null
               })`
             }}
           />
