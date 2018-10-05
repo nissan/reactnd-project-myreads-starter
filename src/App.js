@@ -27,9 +27,7 @@ class BooksApp extends React.Component {
       bookitem => (bookitem.id === book.id ? (bookitem.shelf = shelf) : "")
     );
     await BooksAPI.update(book, shelf);
-    this.flushState();
     this.setState({ library: await BooksAPI.getAll() });
-    await this.search(this.state.currentQuery);
   }
 
   async search(query) {
