@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 
 class Book extends Component {
+  state = {
+    shelf:"none",
+  }
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
   async handleChange(event) {
-    await this.props.updateLibrary(this.props.book, event.target.value);
+    event.preventDefault();
+    const shelf = event.target.value;
+    await this.setState({shelf});
+    await this.props.updateLibrary(this.props.book, shelf);
+  }
+  async componentDidMount(){
+    await this.setState({shelf:this.props.book.shelf});
   }
   render() {
     return (
@@ -34,7 +43,7 @@ class Book extends Component {
 
           <div className="book-shelf-changer">
             <select
-              value={this.props.book.shelf ? this.props.book.shelf : "none"}
+              value={this.state.shelf ? this.state.shelf : "none"}
               onChange={this.handleChange}
             >
               <option value="zero" disabled>
